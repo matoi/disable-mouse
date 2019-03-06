@@ -55,7 +55,10 @@
 
 (defconst disable-mouse--multipliers '("double" "triple"))
 
-(defconst disable-mouse--button-numbers '(1 2 3 4 5))
+(defvar disable-mouse-button-numbers '(1 2 3 4 5)
+  "Mouse button event base names.
+Before `disable-mouse' is loaded, you can customize this if you
+do not want to disable mouse button events.")
 
 (defconst disable-mouse--button-events '("mouse" "up-mouse" "down-mouse" "drag-mouse"))
 
@@ -69,7 +72,7 @@ do not want to disable mouse wheel events.")
          (mapcar (lambda (n)
                    (mapcar (lambda (e) (format "%s-%d" e n))
                            disable-mouse--button-events))
-                 disable-mouse--button-numbers)))
+                 disable-mouse-button-numbers)))
 
 (defvar disable-mouse-bindings
   (append disable-mouse-button-bindings disable-mouse-wheel-events)
